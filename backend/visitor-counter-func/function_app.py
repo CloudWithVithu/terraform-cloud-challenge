@@ -4,32 +4,35 @@ import os
 from azure.cosmos import CosmosClient, exceptions
 import json
 
-app = func.FunctionApp()
+app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
 # Initialize Cosmos DB client only when needed
 def get_cosmos_client():
     try:
         COSMOS_URL = os.environ["COSMOS_DB_URL"]
         COSMOS_KEY = os.environ["COSMOS_DB_KEY"]
+        COSMOS_DB_NAME = os.environ["COSMOS_DB_NAME"]
+        COSMOS_CONTAINER_NAME = os.environ["COSMOS_CONTAINER_NAME"]
         
         # Validate the key isn't empty
         if not COSMOS_KEY:
             raise ValueError("Cosmos DB key is empty")
             
-        return CosmosClient(COSMOS_URL, COSMOS_KEY)
+        client = CosmosClient(COSMOS_URL, COSMOS_KEY)
+        database = client.get_database_client(COSMOS_DB_NAME)
+        container = database.get_container_client(COSMOS_CONTAINER_NAME)
+        return container
     except Exception as e:
         logging.error(f"Failed to initialize Cosmos client: {str(e)}")
         raise
 
+@app.function_name(name="GetResumeCounter")
 @app.route(route="GetResumeCounter", auth_level=func.AuthLevel.ANONYMOUS)
 def GetResumeCounter(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
     try:
-        client = get_cosmos_client()
-        database = client.get_database_client("ResumeTerraform")
-        container = database.get_container_client("Counter_1")
-        
+        container = get_cosmos_client()
         doc_id = "1"
         
         try:

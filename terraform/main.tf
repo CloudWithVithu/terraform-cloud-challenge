@@ -59,18 +59,27 @@ resource "azurerm_linux_function_app" "resume_fn" {
   storage_account_name       = azurerm_storage_account.function_storage.name
   storage_account_access_key = azurerm_storage_account.function_storage.primary_access_key
   functions_extension_version = var.function_runtime_version
+
   site_config {
     application_stack {
       python_version = "3.11"
     }
+    cors {
+      allowed_origins = ["*"] # Or specify your frontend URL
+    }
+    always_on = false # Since you're using Consumption plan
   }
+
   app_settings = {
-    "WEBSITE_RUN_FROM_PACKAGE" = "1"
-    "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.resume_insights.instrumentation_key
+    "WEBSITE_RUN_FROM_PACKAGE"              = "1"
+    "APPINSIGHTS_INSTRUMENTATIONKEY"        = azurerm_application_insights.resume_insights.instrumentation_key
     "APPLICATIONINSIGHTS_CONNECTION_STRING" = azurerm_application_insights.resume_insights.connection_string
-    "COSMOS_DB_URL"         = "https://resterraformcosmosdb.documents.azure.com:443/"
-    "COSMOS_DB_KEY"         = "REMOVED_SECRET"
-    "COSMOS_DB_NAME"        = "ResumeTerraform"
-    "COSMOS_CONTAINER_NAME" = "Counter_1"
+    "COSMOS_DB_URL"                         = "https://resterraformcosmosdb.documents.azure.com:443/"
+    "COSMOS_DB_KEY"                         = "REMOVED_SECRET"
+    "COSMOS_DB_NAME"                        = "ResumeTerraform"
+    "COSMOS_CONTAINER_NAME"                 = "Counter_1"
+    "AzureWebJobsStorage"                   = azurerm_storage_account.function_storage.primary_connection_string
+    "FUNCTIONS_WORKER_RUNTIME"              = "python"
   }
 }
+
