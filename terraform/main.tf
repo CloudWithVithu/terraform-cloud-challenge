@@ -75,7 +75,7 @@ resource "azurerm_linux_function_app" "resume_fn" {
     "APPINSIGHTS_INSTRUMENTATIONKEY"        = azurerm_application_insights.resume_insights.instrumentation_key
     "APPLICATIONINSIGHTS_CONNECTION_STRING" = azurerm_application_insights.resume_insights.connection_string
     "COSMOS_DB_URL"                         = "https://resterraformcosmosdb.documents.azure.com:443/"
-    "COSMOS_DB_KEY"                         = "REMOVED_SECRET"
+    "COSMOS_DB_KEY"                         = var.cosmos_db_key
     "COSMOS_DB_NAME"                        = "ResumeTerraform"
     "COSMOS_CONTAINER_NAME"                 = "Counter_1"
     "AzureWebJobsStorage"                   = azurerm_storage_account.function_storage.primary_connection_string

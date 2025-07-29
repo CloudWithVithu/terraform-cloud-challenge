@@ -21,3 +21,8 @@ variable "app_service_plan_name" {
 variable "function_runtime_version" {
   default = "~4"
 }
+
+variable "cosmos_db_key" {
+  description = "Cosmos DB key"
+  sensitive   = true
+}
