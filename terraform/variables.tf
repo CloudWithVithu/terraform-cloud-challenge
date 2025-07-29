@@ -23,6 +23,7 @@ variable "function_runtime_version" {
 }
 
 variable "cosmos_db_key" {
-  description = "Cosmos DB key"
+  description = "Cosmos DB Primary Key"
+  type        = string
   sensitive   = true
 }
