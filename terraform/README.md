@@ -4,14 +4,14 @@ Hi, I’m **Vithushan Visuvalingam**, an aspiring Cloud Engineer. This project i
 
 ---
 
-## 📌 Live Demo
+# 📌 Live Demo
 
 🔗 [Live Site](https://vithustorageterra.z9.web.core.windows.net)  
 👁️ Visit Counter powered by Azure Function + Cosmos DB
 
 ---
 
-## 🚀 Project Highlights
+# 🚀 Project Highlights
 
 | Feature                          | Tech Stack                                   |
 |----------------------------------|-----------------------------------------------|
@@ -24,7 +24,7 @@ Hi, I’m **Vithushan Visuvalingam**, an aspiring Cloud Engineer. This project i
 
 ---
 
-## 🛠️ Technologies Used
+# 🛠️ Technologies Used
 
 - **Azure Services:** Blob Storage, Cosmos DB, Functions, App Insights, Resource Groups, Storage Accounts
 - **DevOps:** GitHub Actions, Terraform, CI/CD Pipelines
@@ -33,7 +33,7 @@ Hi, I’m **Vithushan Visuvalingam**, an aspiring Cloud Engineer. This project i
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
 terraform-cloud-challenge/
 │
@@ -62,7 +62,7 @@ terraform-cloud-challenge/
 
 ---
 
-## 🧠 Lessons Learned
+# 🧠 Lessons Learned
 
 - Deep understanding of Terraform state locking, modules, and secure secrets
 - Troubleshooting real-world GitHub push protection and Azure resource conflicts
@@ -70,7 +70,7 @@ terraform-cloud-challenge/
 
 ---
 
-## 🎯 Next Steps
+# 🎯 Next Steps
 
 - Migrate to Bicep for comparison with Terraform
 - Add testing framework for Function App
@@ -78,7 +78,7 @@ terraform-cloud-challenge/
 
 ---
 
-## 🤝 Connect with Me
+# 🤝 Connect with Me
 
 🔗 [LinkedIn](https://linkedin.com/in/vithushan-visuvalingam-3aa0611b8)  
 📧 vithushanvisuvalingam@email.com  
