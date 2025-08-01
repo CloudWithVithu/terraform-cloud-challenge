@@ -85,4 +85,5 @@ resource "azurerm_linux_function_app" "resume_fn" {
 
 
 # Dummy trigger comment
+# Dummy trigger comment
 
