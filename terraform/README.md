@@ -87,5 +87,4 @@ terraform-cloud-challenge/
 ---
 
 🛡️ Built with 💙 on Azure | Powered by Terraform | CI/CD with GitHub Actions
-Hi
 
